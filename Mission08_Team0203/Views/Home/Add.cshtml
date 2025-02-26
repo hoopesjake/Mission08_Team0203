@@ -1,0 +1,50 @@
+﻿@model Mission08_Team0203.Models.TaskModel
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-4 text-center">Add Task</h2>
+
+            <form asp-action="Add" method="post">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="TaskName" class="form-label">Task Name</label>
+                        <input asp-for="TaskName" class="form-control" required />
+                        <span asp-validation-for="TaskName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="DueDate" class="form-label">Due Date</label>
+                        <input asp-for="DueDate" type="date" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Quadrant" class="form-label">Quadrant</label>
+                        <select asp-for="Quadrant" class="form-select" required>
+                            <option value="1">Important / Urgent</option>
+                            <option value="2">Important / Not Urgent</option>
+                            <option value="3">Not Important / Urgent</option>
+                            <option value="4">Not Important / Not Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="CategoryId" class="form-label">Category</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary w-100">Add Task</button>
+                    </div>
+                    <div class="col-md-6">
+                        <a asp-action="Quadrant" class="btn btn-secondary w-100">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

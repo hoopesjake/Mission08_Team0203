@@ -1,0 +1,66 @@
+@model Mission08_Team0203.Models.TaskModel
+
+@{
+    ViewData["Title"] = "Edit Task";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-4 text-center">Edit Task</h2>
+
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="TaskId" />
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="TaskName" class="form-label">Task Name</label>
+                        <input asp-for="TaskName" class="form-control" required />
+                        <span asp-validation-for="TaskName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="DueDate" class="form-label">Due Date</label>
+                        <input asp-for="DueDate" type="date" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Quadrant" class="form-label">Quadrant</label>
+                        <select asp-for="Quadrant" class="form-select" required>
+                            <option value="1">Important / Urgent</option>
+                            <option value="2">Important / Not Urgent</option>
+                            <option value="3">Not Important / Urgent</option>
+                            <option value="4">Not Important / Not Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="CategoryId" class="form-label">Category</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories"></select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Completed</label>
+                        <select asp-for="Completed" class="form-select">
+                            <option value="false">Not Completed</option>
+                            <option value="true">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+                    </div>
+                    <div class="col-md-6">
+                        <a asp-action="Quadrant" class="btn btn-secondary w-100">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
